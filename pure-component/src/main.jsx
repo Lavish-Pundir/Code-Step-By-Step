@@ -4,11 +4,13 @@ import './index.css'
 import App from './App.jsx'
 import UseMemo from './UseMemo.jsx'
 import RefUse from './RefUse.jsx'
+import UseRefHook from './UseRefHook.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
     <UseMemo />
     <RefUse />
+    <UseRefHook />
   </StrictMode>,
 )
