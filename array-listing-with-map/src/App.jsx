@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Table} from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
 import './App.css'
 
 function App() {
@@ -9,17 +9,31 @@ function App() {
     {
       name: "Lavish kumar",
       email: "lavi@gmail.com",
-      contact: "0000"
+      address: [
+        { Hn: "10", city: "Noida", country: "India" },
+        { Hn: "23", city: "Delhi", country: "India" },
+        { Hn: "34", city: "Gurgaon", country: "India" },
+      ]
     },
     {
       name: "Gaurav kumar",
       email: "gaurav@gmail.com",
-      contact: "123"
+      // contact: "123"
+      address: [
+        { Hn: "10", city: "Noida", country: "India" },
+        { Hn: "23", city: "Delhi", country: "India" },
+        { Hn: "34", city: "Gurgaon", country: "India" },
+      ]
     },
     {
       name: "Ajeet kumar",
       email: "ajeet@gmail.com",
-      contact: "1234"
+      // contact: "1234"
+      address: [
+        { Hn: "10", city: "Noida", country: "India" },
+        { Hn: "23", city: "Delhi", country: "India" },
+        { Hn: "34", city: "Gurgaon", country: "India" },
+      ]
     },
   ]
 
@@ -43,7 +57,7 @@ function App() {
             <th>Count</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Contact</th>
+            <th>Address</th>
           </tr>
         </thead>
 
@@ -54,7 +68,21 @@ function App() {
                 <td>{index + 1}</td>
                 <td>{data.name}</td>
                 <td>{data.email}</td>
-                <td>{data.contact}</td>
+                <td>
+                  <Table variant='dark' striped >
+                    <tbody>
+                      {
+                        data.address.map((itom) =>
+                          <tr>
+                            <td>{itom.Hn}</td>
+                            <td>{itom.city}</td>
+                            <td>{itom.country}</td>
+                          </tr>
+                        )
+                      }
+                    </tbody>
+                  </Table>
+                </td>
               </tr>
             ))
           }
