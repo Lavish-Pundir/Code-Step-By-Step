@@ -9,7 +9,7 @@ function Filter() {
     const city = searchParams.get('city');
 
     return (
-        <>
+        <div className='filter'>
             <h1>Filter Page</h1>
             <h3>Age is : {age}</h3>
             <h3>City is : {city}</h3>
@@ -20,7 +20,7 @@ function Filter() {
                 onClick={(e) => setSearchParams({age:40})}>
                 Set Age In a Query Param
             </button>
-        </>
+        </div>
     )
 }
 
