@@ -1,15 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 function NavBar() {
     return (
         <>
-            <ul>
-                <li><Link to="/">Home</Link></li>      
-                 <li><Link to="about">About</Link></li>  
-                 <li><Link to="contact">Contact</Link></li>  
-                 <li><Link to="user/anil">Anil</Link></li>  
-                 <li><Link to="user/peter">Peter</Link></li>  
+            <ul className='navbar'>
+                <li><NavLink className="nav-bar-link" to="/">Home</NavLink></li>      
+                 <li><NavLink className="nav-bar-link" to="/about">About</NavLink></li>  
+                 <li><NavLink className="nav-bar-link" to="/contact">Contact</NavLink></li>  
+
+
+                 {/* <li><Link to="/user/anil">Anil</Link></li>  
+                 <li><Link to="/user/peter">Peter</Link></li>   */}
+
                     {/* ye react component hai is mai component render hota hai website load nahi hoti */}
 
                 {/* <li><a href="/">Home</a></li>
