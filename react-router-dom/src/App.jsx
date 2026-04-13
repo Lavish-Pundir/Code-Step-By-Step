@@ -5,6 +5,7 @@ import About from './component/About';
 import NavBar from './component/NavBar';
 import Page404 from './component/Page404';
 import User from './component/User';
+import Filter from './component/Filter';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           < Route path="/" element={<Home />} />
           < Route path="/about" element={<About />} />
           < Route path="/user/:name" element={<User />} />
+          < Route path="/filter" element={<Filter />} />
           {/* < Route path="/*" element={<Page404 />} /> */}
           < Route path="/*" element={<Navigate to="/" />}  /> 
           {/* Navigate khud sai render kr daita hai joo bhi url hm set krtai hai ager url glat hoo jai */}
