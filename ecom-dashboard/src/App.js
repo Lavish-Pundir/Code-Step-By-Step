@@ -1,13 +1,12 @@
-import logo from './logo.svg';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import './App.css';
-import { Button } from 'react-bootstrap'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import Header from './Header';
-import Login from './Login';
 import Register from './Register';
+import Login from './Login';
 import AddProduct from './AddProduct';
 import UpdateProduct from './UpdateProduct';
-
+import Protected from './Protected'
 
 
 function App() {
@@ -16,21 +15,14 @@ function App() {
       <BrowserRouter>
         <Header />
         <h1>E-Comm-Project</h1>
-
         <Routes>
+          <Route path="/add" element={<Protected Component={AddProduct} />} />
+
+          <Route path="/update" element={<Protected Component={UpdateProduct} />} />
+
           <Route path="/login" element={<Login />} />
-        </Routes>
 
-        <Routes>
           <Route path="/register" element={<Register />} />
-        </Routes>
-
-        <Routes>
-          <Route path="/add" element={<AddProduct />} />
-        </Routes>
-
-        <Routes>
-          <Route path="/update" element={<UpdateProduct />} />
         </Routes>
 
       </BrowserRouter>
