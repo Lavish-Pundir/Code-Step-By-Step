@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function Protected({Component}) {
-    
+function Protected({ Component }) {
+
     const navigate = useNavigate();
 
-        useEffect(() => {
-            if (!localStorage.getItem('user-info')) {
-                navigate("/register");   // ab history ko replace kr diya navigate nai
-            }
-        }, [])
-        
-    return (
-        <div>
-            <Component />
-        </div>
-    )
+    useEffect(() => {
+        const user = localStorage.getItem("user-info");
+
+        if (!user) {      // ab history ko replace kr diya navigate nai
+            navigate("/register");
+        }
+    }, [navigate]);
+
+    return <Component />;
+
 }
 
 export default Protected

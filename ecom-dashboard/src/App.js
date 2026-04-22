@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css';
 
 import Header from './Header';
@@ -7,6 +7,7 @@ import Login from './Login';
 import AddProduct from './AddProduct';
 import UpdateProduct from './UpdateProduct';
 import Protected from './Protected'
+import ProductList from './ProductList';
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
           <Route path="/add" element={<Protected Component={AddProduct} />} />
 
           <Route path="/update" element={<Protected Component={UpdateProduct} />} />
+
+          <Route path="/productList" element={<Protected Component={ProductList} />} />
 
           <Route path="/login" element={<Login />} />
 

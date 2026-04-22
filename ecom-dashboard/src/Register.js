@@ -6,7 +6,6 @@ function Register() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -15,14 +14,15 @@ function Register() {
         }
     }, [navigate])
 
-    async function signUp() {
+    async function signUp(e) {
+        e.preventDefault();
 
         if (!name || !email || !password) {
             alert("All fields are required");
             return;
         }
 
-        let item = { name, password, email }
+        // let item = { name, password, email }
         // console.log(item);
 
         try {
@@ -32,7 +32,7 @@ function Register() {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
-                body: JSON.stringify(item)
+                body: JSON.stringify({ name, password, email })  // item
             });
 
             let result = await response.json();
@@ -42,50 +42,58 @@ function Register() {
                 //  sirf user data store karo 
                 localStorage.setItem("user-info", JSON.stringify(result.user));
                 localStorage.setItem("token", result.token);
-
                 navigate("/add");
-
             } else {
-                alert(result.message || "Registration failed");
+                alert("Registration failed");
             }
 
         } catch (error) {
             console.log("Error:", error);
-            alert("Something went wrong");
         }
-
     }
 
     return (
         <div className='col-sm-6 offset-sm-3'>
             <h1>User Sign Up</h1>
 
-            <input type='text' value={name}
-                placeholder='Enter your Name'
-                onChange={(e) => setName(e.target.value)}
-                className='form-control'
-            />
-            <br />
+            <form onSubmit={signUp}>
+                <input
+                    type='text' value={name}
+                    className='form-control'
+                    placeholder='Enter your Name'
+                    onChange={(e) => setName(e.target.value)}
+                    autoComplete="name"
+                    required
+                />
+                <br />
 
-            <input type='text' value={password}
-                placeholder='Enter your password'
-                onChange={(e) => setPassword(e.target.value)}
-                className='form-control'
-            />
-            <br />
+                <input
+                    type='text' value={password}
+                    className='form-control'
+                    placeholder='Enter your password'
+                    onChange={(e) => setPassword(e.target.value)}
+                    autoComplete="new-password"
+                    required
+                />
+                <br />
 
-            <input type='text' value={email}
-                placeholder='Enter your email'
-                onChange={(e) => setEmail(e.target.value)}
-                className='form-control'
-            />
-            <br />
+                <input
+                    type='text' value={email}
+                    className='form-control'
+                    placeholder='Enter your email'
+                    onChange={(e) => setEmail(e.target.value)}
+                    autoComplete="email"
+                    required
 
-            <button
-                onClick={signUp}
-                className='btn btn-primary'>
-                Sign Up
-            </button>
+                />
+                <br />
+
+                <button
+                    type="submit"
+                    className='btn btn-primary'>
+                    Sign Up
+                </button>
+            </form>
 
         </div>
     )
